@@ -1,23 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import LoadingWheel from './components/loading';
+import InputForm from './components/form';
 
 function App() {
+
+  const [isLoading, setIsLoading] = React.useState(true);
+  var animationClassNameTrigger = "App";
+
+  if (!isLoading) animationClassNameTrigger = "App content-fadein"
+
+  setTimeout(() => {setIsLoading(false)}, 5000);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{textAlign: "center", height: "100%", position: "absolute", width: "100%"}}>
+      <LoadingWheel isLoading={isLoading}/>
+      <div className={animationClassNameTrigger} style={{height: "100%"}}>
+        <InputForm></InputForm>
+      </div>
     </div>
   );
 }

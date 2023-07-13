@@ -1,38 +1,51 @@
 .App {
+  position: absolute;
   text-align: center;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loading-fadeout {
+  animation-name: fadeout;
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  opacity: 0%;
+}
+.pending {
+  list-style: "⬜";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.completed {
+  list-style: "✅";
+}
+
+.content-fadein {
+  animation-name: fadein;
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  opacity: 100%;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+    display: none;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes fadein {
+  0% {
+    opacity: 0%;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 100%;
   }
 }
